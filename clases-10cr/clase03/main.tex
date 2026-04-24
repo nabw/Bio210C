@@ -64,7 +64,8 @@ Törkylempijä vongahdus
 \begin{frame}[fragile]\frametitle{Escritura}
     \begin{minted}{python}
     f = open("../archivos/pangrams.txt", "w") # (w)rite
-    f.write() # o writelines()
+    s = "hola"
+    f.write(s) # o writelines(["hola\n", "chao\n"])
     f.close()
     \end{minted}
 
