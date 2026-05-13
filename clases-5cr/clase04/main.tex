@@ -40,7 +40,7 @@
     \end{itemize}
     Así se cargan ciertas funcionalidades. 
 
-    \pause Hoy aprenderemos a crear nuevos y conoceremos los más importantes en ciencia
+    \pause Hoy aprenderemos a crear nuevos y conoceremos algunos importantes en ciencia
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\frametitle{Pip}
@@ -56,7 +56,7 @@
         > import pandas  # recién instalada!
             \end{minted}
     \end{itemize}
-    
+
     \pause Dónde están los programas...?
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -249,55 +249,15 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
     \begin{minted}{python}
   > import numpy as np
   > import matplotlib.pyplot as plt
-  > xs = np.linspace(0, 2*np.pi, 1000) # [0,2 pi]
+  > xs = np.linspace(0, 2*np.pi, 1000) # [0,2 pi] vectorizado
   > ys = np.sin(xs)
   > plt.plot(xs,ys) # Lista de puntos x e y
   > plt.show()
     \end{minted} 
-   
+
     \pause Se puede agregar de todo... 
 
     Ver documentación online: \texttt{matplotlib.org}.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}\frametitle{Recap}
-    \begin{itemize}
-        \item Dónde están los módulos por defecto
-        \item Cómo agregar un módulo
-        \item Cómo hacer módulo detectable con PYTHONPATH
-        \item \texttt{math}
-        \item \texttt{Numpy}
-        \item \texttt{Matplotlib}
-    \end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \maketitle
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]\frametitle{Mini ejercicios}
-    \code{operaciones.py}
-    \begin{minted}{python}
-  def suma(x,y): return x+y
-
-  def mult(x,y): return x*y
-    \end{minted}
-
-    \begin{itemize}
-        \item Crear el módulo \code{operaciones} e importarlo desde un script.
-        \item Guardar el módulo en otro lado e importarlo usando \code{PYTHONPATH}
-    \end{itemize}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}\frametitle{Temas}
-    \begin{itemize}
-        \item Scipy
-        \item Pandas
-    \end{itemize}
-
-    \vspace{1cm}
-    Todas instalables con \code{pip}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -532,13 +492,10 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\frametitle{Recap}
     \begin{itemize}
-        \item Python tiene muchas librerías para hacer ciencia
-        \item Algunas simples: \code{math}, \code{statistics}, \code{random}
-        \item Otras complejas: \code{scipy}, \code{numpy}
-        \item Scipy: interpolar, minimizar, resolver
-        \item Pandas sirve para procesar datos
+        \item Gestión de módulos, PYTHONPATH
+        \item \texttt{math, random, statistics, Numpy, Scipy, Matplotlib, Pandas}
+        \item Python tiene muchas librerías para hacer ciencia!
         \item También se puede hacer estadística (no lo vimos)
-        \item Máscaras booleanas
     \end{itemize}
 
     \pause
@@ -552,6 +509,19 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile,noframenumbering]\frametitle{Mini ejercicios}
     \begin{itemize}
+        \item 
+    \code{operaciones.py}
+    \begin{minted}{python}
+  def suma(x,y): return x+y
+
+  def mult(x,y): return x*y
+    \end{minted}
+
+    \begin{itemize}
+        \item Crear el módulo \code{operaciones} e importarlo desde un script.
+        \item Guardar el módulo en otro lado e importarlo usando \code{PYTHONPATH}
+    \end{itemize}
+
     \item Genere una sucesión de 0's y 1's que representan lanzamientos de monedas. Calcule indicadores estadísticos de sus datos usando \code{statistics} y \code{pandas}
     \item Considere la función $f(x)=\sin x$ y encuentre numéricamente un mínimo con \code{scipy.minimize}. Qué pasa con los otros mínimos? 
     \end{itemize}

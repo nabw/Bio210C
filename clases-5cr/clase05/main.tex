@@ -4,7 +4,7 @@
 \usepackage{minted}
 \usepackage{mathtools}
 
-\title[short title]{Clase 6: Clases y polimorfismo}
+\title[short title]{Clase 6: Polimorfismo y desarrollo de código}
 \subtitle{}
 \author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
 \institute[UC|CMM] 
@@ -60,7 +60,6 @@
     \begin{minted}{python}
 class A:
    # Método constructor
-   # self es obligatorio
    def __init__(self, n):
       self.n = n # son distintos!
       self.n2 = n**2
@@ -78,7 +77,6 @@ print(type(a)) # <class '__main__.A'>
     \begin{minted}{python}
 class Vec2D:
    # Método constructor
-   # self es obligatorio
    def __init__(self, x, y): # magic function
       self.x = x 
       self.y = y
@@ -161,10 +159,6 @@ for animal in animals:
     print(animal.speak())
     \end{minted}
     \end{footnotesize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \maketitle
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
