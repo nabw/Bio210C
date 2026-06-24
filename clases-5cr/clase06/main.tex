@@ -189,6 +189,7 @@ names(Data.Cars)
 rownames(Data.Cars)
 Data.Cars$cyl  # Comparar con Data.Cars["cyl"]
 summary(Data.Cars)
+head(Data.Cars)
 max(iris["Petal.Length"]) 
 which.max(iris$Petal.Length) # con [] no funciona
 mean(iris$Petal.Length)
@@ -441,6 +442,7 @@ Consecuencias:
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[noframenumbering, fragile]\frametitle{Mini ejercicios}
+    \begin{tiny}
     R: 
     \begin{enumerate}
         \item Instalar R en su computador y probar consola
@@ -448,7 +450,7 @@ Consecuencias:
             \begin{center}
                 https://www.w3schools.com/r/r\_exercises.asp
             \end{center}
-        \item Se pueden agregar funciones no lineales de parámetros. Pruebe modelos no-lineales:
+        \item Se pueden agregar funciones no lineales de datos. Pruebe modelos no-lineales:
     \end{enumerate}
 
             \begin{minted}{R}
@@ -465,5 +467,6 @@ Bash:
         \item Mostrar resultado final
     \end{itemize}
 
+\end{tiny}
 \end{frame}
 \end{document}
