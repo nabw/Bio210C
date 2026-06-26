@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\frametitle{Motivación}
     \begin{itemize}
-        \item El genoma human pesa $\approx$ 1Gb (película en def standard)
+        \item El genoma humano pesa $\approx$ 1Gb (película en def standard)
         \item El genoma del krill pesa $\approx$ 12Gb
         \item CPU procesa hasta 64 Kb a la vez
     \end{itemize}
@@ -75,7 +75,7 @@ Törkylempijä vongahdus
 \begin{frame}[fragile]\frametitle{Uso común}
     Se usa contexto con {\color{purple}\texttt{with}} para cierre automático
     \begin{minted}{python}
-    with  open("ejemplo.txt", "w") as f
+    with  open("ejemplo.txt", "w") as f:
         f.write("texto nuevo\n") 
     # fin de 'with'
     [...]
@@ -94,7 +94,7 @@ Törkylempijä vongahdus
     \vspace{1cm}
     \begin{minted}{python}
     modo = "w" # r|w|x|a
-    with open("ejemplo.txt", modo) as f
+    with open("ejemplo.txt", modo) as f:
         [...]
     \end{minted}
 \end{frame}

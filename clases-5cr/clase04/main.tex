@@ -285,7 +285,7 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
         \begin{center}
             \includegraphics[width=0.4\textwidth]{../images/interp-data.png}
         \end{center}
-        Y si quiero el valor en $x=3$? Eso se llama \emph{interpolación}\footnote{Extrapolación sería bajo 0 o sobre 8}
+        Y si quiero saber la densidad en $t=3$? Eso es \emph{interpolación}\footnote{Extrapolación sería bajo 0 o sobre 8}
     }
     \begin{columns}
         \begin{column}{0.6\textwidth}
@@ -297,15 +297,15 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
 
   > from scipy import interpolate
 
-  > x = np.linspace(0,8,5)
+  > t = np.array([0, 2, 4, 6, 8])
 
-  > y = np.exp(-x/3)
+  > OD = np.array([0.1, 0.2, 0.5, 1.2, 1.5])
 
-  > f = interpolate.interp1d(x, y, kind)
+  > f = interpolate.interp1d(t, OD, kind)
 
-  > xnew = np.linspace(0,8,100)
+  > tnew = np.linspace(0,8,100)
 
-  > ynew = f(xnew)
+  > ODnew = f(tnew)
   }
     }
         \end{column}
@@ -338,21 +338,20 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
     \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t,fragile]\frametitle{Scipy: Solución de ecuaciones ($f(x)=0$)}
+\begin{frame}[t,fragile]\frametitle{Scipy: Cuándo se llega a 100 bacterias?}
     \begin{small}
-    $$ f(x) \coloneqq x + \sin x  = 0  $$
+    $$ f(t) \coloneqq 10 e^{0.5 t} - 100 = 0 $$
     \vspace{-0.5cm}
     \begin{columns}
         \begin{column}{0.49\textwidth}
     \begin{minted}{python}  
   from scipy.optimize import root_scalar 
-  def f(x): return x+sin(2*pi*x)
-  domx = np.linspace(-2,2,1000)
-  domy = [f(x) for x in domx]
-  x0,x1 = 3, -3
-  sol = root_scalar(f, x0=x0, x1=x1)
+  def f(t): return 10*np.exp(0.5*t) - 100
+  domt = np.linspace(0, 6, 100)
+  domP = [f(t) for t in domt]
+  sol = root_scalar(f, bracket=[0, 6])
   plt.scatter(sol.root, f(sol.root))
-  plt.plot(domx, domy);plt.show()
+  plt.plot(domt, domP);plt.show()
 
     \end{minted}
         \end{column}
@@ -362,24 +361,24 @@ st.StatisticsError(  st.exp(          st.harmonic_mean(  st.mean(               
             \end{flushright}
         \end{column}
     \end{columns}
-    \pause\idea{Cómo obtener las otras soluciones?}
+    \pause\idea{Y si la población decrece?}
     \end{small}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t,fragile]\frametitle{Scipy: Minimización}
+\begin{frame}[t,fragile]\frametitle{Scipy: Temperatura óptima (Maximizando)}
     \begin{small}
-    $$ \min_ x f(x) \coloneqq \sin^2 4x + x^2  = 0  $$
+    $$ \min_ T f(T) \coloneqq (T - 37)^2 - 100    $$
     \vspace{-0.5cm}
     \begin{columns}
         \begin{column}{0.49\textwidth}
     \begin{minted}{python}  
   from scipy.optimize import minimize_scalar 
-  def f(x): return sin(4*x)**2 + x**2
-  domx = np.linspace(-4,4,1000)
-  domy = [f(x) for x in domx]
+  def f(T): return (T - 37)**2 - 100
+  domT = np.linspace(20, 50, 100)
+  domV = [f(T) for T in domT]
   sol = minimize_scalar(f)
   plt.scatter(sol.x, f(sol.x))
-  plt.plot(domx, domy);plt.show()
+  plt.plot(domT, domV);plt.show()
     \end{minted}
         \end{column}
         \begin{column}{0.5\textwidth}

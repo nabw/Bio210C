@@ -4,7 +4,7 @@
 \usepackage{minted}
 \usepackage{mathtools}
 
-\title[short title]{Clase 6: Polimorfismo y desarrollo de código}
+\title[short title]{Clase 5: Polimorfismo y desarrollo de código}
 \subtitle{}
 \author[NA Barnafi] {Nicolás Alejandro Barnafi Wittwer}
 \institute[UC|CMM] 
@@ -120,43 +120,43 @@ class Vec2D:
     \end{minted}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]\frametitle{Ejemplo I (src: HowToGeek)}
+\begin{frame}[fragile]\frametitle{Ejemplo I}
     \begin{footnotesize}
     \begin{minted}{python}
-class Bird:
-  def intro(self): print("There are many types of birds.")
+class Secuencia:
+  def intro(self): print("Soy una cadena de monómeros.")
     
-  def flight(self): print("Most of the birds can fly but some cannot.")
+  def longitud(self): print("Tengo longitud indefinida.")
   
-class sparrow(Bird):
-  def flight(self): print("Sparrows can fly.")
+class SecuenciaADN(Secuencia):
+  def longitud(self): print("Mido longitud en bp.")
     
-class ostrich(Bird):
-  def flight(self): print("Ostriches cannot fly.")
+class SecuenciaProteina(Secuencia):
+  def longitud(self): print("Mido longitud en aa.")
     
-obj_bird = Bird(); obj_spr = sparrow(); obj_ost = ostrich()
-obj_bird.flight(); obj_spr.flight(); obj_ost.flight()
+obj_seq = Secuencia(); obj_adn = SecuenciaADN(); obj_prot = SecuenciaProteina()
+obj_seq.longitud(); obj_adn.longitud(); obj_prot.longitud()
     \end{minted}
     \end{footnotesize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]\frametitle{Ejemplo II (src: HowToGeek)}
+\begin{frame}[fragile]\frametitle{Ejemplo II}
     \begin{footnotesize}
     \begin{minted}{python}
-class Animal:
-    def speak(self):
+class Celula:
+    def division(self):
         raise NotImplementedError("Subclass must implement this method")
 
-class Dog(Animal):
-    def speak(self): return "Woof!"
+class CelulaProcariota(Celula):
+    def division(self): return "Fisión binaria!"
 
-class Cat(Animal):
-    def speak(self): return "Meow!"
+class CelulaEucariota(Celula):
+    def division(self): return "Mitosis!"
 
-animals = [Dog(), Cat()]
+celulas = [CelulaProcariota(), CelulaEucariota()]
 
-for animal in animals:
-    print(animal.speak())
+for celula in celulas:
+    print(celula.division())
     \end{minted}
     \end{footnotesize}
 \end{frame}
@@ -215,7 +215,7 @@ for animal in animals:
             self.y = y
         def norma(self):
             """
-            Entrega la norma euclideana del vector. Requiere 'sqrt'
+            Entrega la norma euclidiana del vector. Requiere 'sqrt'
             """
             return sqrt(self.x**2 + self.y**2)
     \end{minted}
@@ -292,55 +292,20 @@ for animal in animals:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\frametitle{Recap}
     \begin{itemize}
+        \item Clases permiten crear abstracciones
+        \item Todo objeto es una instancia de clase en Python
+        \item Funciones mágicas permiten código legible!
         \item Documentación es fundamental
         \item Existen muchas herramientas para hacerlo en modo semi-automático
         \item \code{mkdocs} bonito pero trabajoso
         \item \code{pdoc3} feo pero fácil
-        \item \code{git} es LA herramienta de desarrollo colaborativo
-        \item Se basa en un grafo de estados
-        \item Modificaciones locales: \code{add}, \code{commit}, \code{reset}
-        \item Modificaciones remotas: \code{clone}, \code{pull}, \code{push}
     \end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[noframenumbering]\frametitle{Mini ejercicios}
-    \begin{enumerate}
-        \item Instalar git
-        \item Crear cuenta en \code{github.com}
-        \item Subir llave SSH
-        \item Crear repositorio en su cuenta
-        \item Clonar el repositorio localmente
-        \item Crear una carpeta de nombre 'proyecto'
-        \item Dentro esa carpeta crear un archivo con dos funciones
-        \item Instalar pdoc3 y correr \code{pdoc3 --html .} desde la carpeta
-        \item Ver documentación en archivo html recién creado
-
-        \item Hacer \emph{push} del cambio y verificar el cambio
-    \end{enumerate}
-    
-    \begin{center}
-        Turorial online: \code{https://www.w3schools.com/git/}
-    \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}\frametitle{Recap}
-    \begin{itemize}
-        \item Clases permiten crear abstracciones
-        \item Todo objeto es una instancia de clase en Python
-        \item Funciones mágicas permiten código legible!
-    \end{itemize}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \maketitle
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile,noframenumbering]\frametitle{Mini ejercicios}
     \begin{footnotesize}
-    \begin{itemize}
-        \item Crear una clase Cuadrado que reciba como entrada el largo de sus aristas. Cree una función de clase que entregue el área del cuadrado.
-        \item Extienda el ejemplo anterior al caso de un cubo.
-        \item Instalar pdoc3 y correr \code{pdoc3 --html .} desde la carpeta y revisar documentación.
+    \begin{enumerate}
+        \item Crear una clase Cuadrado que reciba como entrada el largo de sus aristas y que tenga una función que imprima el área.
     \begin{minted}{python}
 class Cuadrado:
    def __init__(self, lado): # [... implementación ...]
@@ -350,17 +315,19 @@ class Cuadrado:
     \begin{minted}{python}
 class A:
     def a(self): print("Aa")
-
 class B:
     def a(self):
         A.a(self)
         print("Ba")
-
-b = B()
-b.a()
+b = B(); b.a()
         \end{minted}
-    \end{itemize}
+        \item Instalar pdoc3 y correr \code{\$ pdoc3 --html .} desde la carpeta, revisar documentación.
+    \end{enumerate}
     \end{footnotesize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \maketitle
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
